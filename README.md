@@ -1,68 +1,146 @@
 
-# Parkinson's Disease Detection via Handwriting Analysis
 
-This project presents a deep learning-based approach for early detection and stage classification of Parkinson's Disease using hand-drawn spiral and wave patterns. The model leverages the EfficientNetB3 architecture to achieve high accuracy in identifying Parkinsonian patterns in handwriting.
+# 🧠 Parkinson's Disease Detection via Handwriting Analysis
+
+This project presents a deep learning-based approach to detect and classify the presence of Parkinson’s Disease using spiral and wave drawings. It uses EfficientNetB3 for high-accuracy image classification and provides both backend prediction logic and a frontend interface.
+
+---
 
 ## 🚀 Project Overview
 
-- 📌 **Objective**: Classify Parkinson’s Disease stages using spiral and wave drawings.
-- 🤖 **Model**: EfficientNetB3 Convolutional Neural Network.
-- 🎯 **Accuracy**: Achieved 97% test accuracy.
-- 📊 **Dataset**: Augmented hand-drawn dataset sourced from Kaggle.
+* **🎯 Goal**: Early detection and stage classification of Parkinson's using handwriting patterns.
+* **🤖 Model**: EfficientNetB3 (fine-tuned).
+* **📈 Performance**:
+
+  * **Training Accuracy**: 97%
+  * **Validation Accuracy**: \~97%
+  * **Test Accuracy**: \~97%
+  * **AUC**: \~0.99
+* **🧪 Framework**: TensorFlow + Flask (backend), React.js (frontend)
+
+---
 
 ## 📁 Dataset
 
-The dataset used for this project is available on Kaggle:
+* **Source**: [Kaggle - Augmented Hand-Drawn Parkinson's Dataset](https://www.kaggle.com/datasets/abdulkhalekmugahed/augmented-hand-drawn-data-for-parkinsons-disease)
+* **Structure**:
 
-🔗 [Augmented Hand-Drawn Data for Parkinson's Disease – Kaggle](https://www.kaggle.com/datasets/abdulkhalekmugahed/augmented-hand-drawn-data-for-parkinsons-disease)
+  * `train/`: Spiral and wave images of healthy and Parkinson's subjects.
+  * `val/`: Validation images.
+  * `test/`: Testing images.
 
-- Includes both spiral and wave drawings from healthy and affected individuals.
-
-## 📥 Download Trained Model
-
-To avoid GitHub’s file size limits, the trained model is hosted externally:
-
-📦 [Download Model (.keras) from Google Drive](https://drive.google.com/file/d/1-0fYdY_K-SMSpoSrxaSYl6GyN_8Id84Q/view?usp=sharing)
-
-> After downloading, place the file in the `backend/` folder or adjust the path in your code accordingly.
+---
 
 ## 🧠 Model Architecture
 
-* Base model: **EfficientNetB3**
-* Input size: 300x300 images
-* Optimizer: Adam
-* Loss function: Categorical Crossentropy
-* Augmentations: Rotation, Zoom, Flip, and Brightness adjustments
+* **Base Model**: EfficientNetB3 (ImageNet pretrained)
+* **Image Input Size**: 224x224 pixels
+* **Loss Function**: Binary Crossentropy with Label Smoothing
+* **Optimizer**: Adam
+* **Augmentations**: Rotation, Zoom, Shear, Flip, Brightness
+* **Regularization**: L2 and Dropout
 
-## 📊 Results
+---
+
+## 📦 Download Trained Model
+
+To avoid GitHub file size limits, the model is hosted on Google Drive:
+
+🔗 [Download `parkinsonnew1.keras`](https://drive.google.com/file/d/1-0fYdY_K-SMSpoSrxaSYl6GyN_8Id84Q/view?usp=sharing)
+
+After downloading, place it in the `backend/` directory or adjust the path in `app.py`.
+
+---
+
+## 🖥️ System Architecture
+
+### Backend: `Flask + TensorFlow`
+
+```bash
+# Example API Call
+POST /predict
+Payload: image (form-data)
+
+Response:
+{
+  "prediction": "Parkinson's Detected",
+  "confidence": 0.89
+}
+```
+
+### Frontend: `React`
+
+* Uploads an image and displays the prediction result (Parkinson’s vs Healthy).
+* Simple, responsive UI with real-time preview.
+
+---
+
+## 📊 Results & Evaluation
 
 | Metric    | Value |
 | --------- | ----- |
 | Accuracy  | 97%   |
+| AUC       | 0.99  |
 | Precision | High  |
 | Recall    | High  |
 
-## 📌 Folder Structure
+* Includes Confusion Matrix and ROC Curve.
+* Outlier detection using IQR for pixel intensities.
+
+---
+
+## 📂 Folder Structure
 
 ```
-parkinson/
+parkinsons-detection/
 ├── backend/
 │   ├── app.py
-│   ├── parkinsonnew1.keras
-│   └── ...
+│   └── parkinsonnew1.keras  # (Place after download)
 ├── client/
-│   └── ...
-├── server/
-│   └── ...
+│   └── src/
+│       └── components/
+│           └── UploadComponent.js
 ├── README.md
 ├── requirements.txt
 └── ...
 ```
 
+---
+
+## 🧪 Getting Started
+
+### 🔧 Backend Setup
+
+```bash
+cd backend
+pip install -r requirements.txt
+python app.py
+```
+
+### 🌐 Frontend Setup
+
+```bash
+cd client
+npm install
+npm start
+```
+
+---
+
+## 📌 Features
+
+* Class-balanced training using computed class weights.
+* Advanced augmentations and fine-tuning for robustness.
+* Cross-platform deployment via Flask API and React UI.
+
+---
 
 ## 🙋‍♀️ Author
 
 **Fathima Femin**
-Feel free to connect on [GitHub](https://github.com/fathimafemin)
+🔗 [GitHub Profile](https://github.com/fathimafemin)
+🌐 [Portfolio](https://fathimafemin.github.io/portfolio/)
 
+---
 
+Would you like me to generate this `README.md` file into your project directory or assist with deploying the app?

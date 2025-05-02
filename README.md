@@ -134,6 +134,20 @@ npm start
 * Cross-platform deployment via Flask API and React UI.
 
 ---
+## 🖼️ Screenshots
+
+### 🏠 Home Page
+![Home Page]
+![image](https://github.com/user-attachments/assets/6361d31a-022a-4770-a776-36f0cfddb134)
+
+
+### 🧪 Result - Parkinson's Detected
+![Result - Parkinson]
+![image](https://github.com/user-attachments/assets/d198c9ae-0e1b-428b-bfed-09dc84ca9db7)
+
+
+
+
 
 ## 🙋‍♀️ Author
 
